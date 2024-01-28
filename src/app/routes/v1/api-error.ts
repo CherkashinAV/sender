@@ -1,4 +1,7 @@
-export type ApiErrorCode = 'NOT_IMPLEMENTED';
+export type ApiErrorCode = |
+    'BAD_REQUEST' |
+    'NOT_FOUND' |
+    'INVALID_SECRET';
 
 export class ApiError extends Error {
     code: ApiErrorCode;

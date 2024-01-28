@@ -13,11 +13,9 @@ interface Config {
     'db.port': number;
     'db.user': string;
     'db.password': string;
-    'hash.saltRounds': number;
-    'refreshSessions.maxAmount': number;
-    'refreshSessions.Ttl': number;
-    'jwt.privateKey': string;
-    'accessToken.expiresIn': number;
+    'privateKey': string;
+    'mail.host': string;
+    'mail.port': number;
 }
 
 const prodConfig: Config = {
@@ -29,11 +27,9 @@ const prodConfig: Config = {
     'db.port': parseInt(process.env.DB_PORT!, 10),
     'db.user': process.env.DB_USER!,
     'db.password': process.env.DB_PASS!,
-    'hash.saltRounds': 10,
-    'refreshSessions.maxAmount': 5,
-    'refreshSessions.Ttl': 256 * 60 * 60 * 1000,
-    'jwt.privateKey': process.env.PRIVATE_KEY!,
-    'accessToken.expiresIn': 20 * 60 * 1000
+    'privateKey': process.env.PRIVATE_KEY!,
+    'mail.host': 'smtp.yandex.ru',
+    'mail.port': 465
 };
 
 const testConfig: Config = {
@@ -48,8 +44,6 @@ const ciConfig: Config = {
     ...prodConfig,
     'logger.disable': true,
     'db.name': process.env.TEST_DB_NAME!,
-    'refreshSessions.maxAmount': 2,
-    'refreshSessions.Ttl': 1000
 };
 
 const configsByEnv = new Map<string, Readonly<Config>>([
