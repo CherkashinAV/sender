@@ -28,11 +28,11 @@ export const addEmailHandler = asyncMiddleware(async (req: Request, res: Respons
 		throw new Error('Encode failed');
 	}
 
-	const addEmailResult = addEmail({
+	const addEmailResult = await addEmail({
 		email: body.email,
 		password: passwordEncodeResult.value!,
 		secretCode: secretEncodeResult.value!
-	})
+	});
 
 	if (!addEmailResult) {
 		throw new Error('Insert failed');

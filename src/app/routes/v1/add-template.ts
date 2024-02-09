@@ -26,7 +26,7 @@ export const addTemplateHandler = asyncMiddleware(async (req: Request, res: Resp
     const body = validationResult.data;
 
 	const emailData = await getEmail(body.srcEmail);
-	logger.error(emailData);
+
 	if (!emailData) {
 		throw new ApiError('NOT_FOUND', 404, 'No such emails for distribution');
 	}
