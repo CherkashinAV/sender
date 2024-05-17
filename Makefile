@@ -122,13 +122,3 @@ integration-testing: DB_CONNECTION_NAME=$(TEST_DB_NAME)
 integration-testing: db.init-testing-db db.migrate
 integration-testing:
 	$(run-integration-tests)
-
-
-
-
-
-
-
-
-
-
