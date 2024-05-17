@@ -5,7 +5,7 @@ export function substituteOptions(text: string, options?: Record<string, string>
     }
     
     for (const [key, value] of Object.entries(options)) {
-        const regex = new RegExp(`/{{${key}}}/gm`)
+        const regex = new RegExp(`{{${key}}}`, 'gm')
         resultString = resultString.replace(regex, value);
     }
 
